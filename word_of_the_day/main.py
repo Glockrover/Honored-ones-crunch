@@ -1,5 +1,5 @@
 import smtplib
-
+import random
 
 def get_qoute():
     """
@@ -8,6 +8,9 @@ def get_qoute():
     and returns a randomly selected qoute from the 
     qoutes.txt file.
     """
+    with open("qoutes.txt", "r") as file:
+        quote = file.readlines()
+    return random.choice(quote)
 
 
 def send_email(message):
@@ -23,3 +26,5 @@ def main():
     TODO
     write logic to use the two functions here
     """
+
+print(get_qoute())
