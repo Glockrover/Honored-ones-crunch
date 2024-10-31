@@ -1,25 +1,50 @@
-import unittest
-import mycode
+def main():
+    
+    logic = input('Enter logic: ')
+    num1, opperation, num2 = logic.split(" ")
+    num1 = int(num1)
+    num2 = int(num2)
+    
+    if opperation == "+":
+        print(f"Your answer is {add(num1, num2)}")
 
-class Tests(unittest.TestCase):
+    elif opperation == "-":
+        print(f"Your answer is {sub(num1, num2)}")
 
-    def test_add(self):
-        self.assertEqual(mycode.add(6,6),12)
-        self.assertEqual(mycode.add(-1,2),1)
-        self.assertEqual(mycode.add(-5,2),-3)
+    elif opperation == "*":
+        print(f"Your answer is {multiply(num1, num2)}")
 
-    def test_multiply(self):
-        self.assertEqual(mycode.multiply(6,3),18)
-        self.assertEqual(mycode.multiply(1,1),1)
-        self.assertEqual(mycode.multiply(5,2),10)
+    elif opperation == "/":
+        print(f"Your answer is {divide(num1, num2)}")
 
-    def test_subtract(self):
-        self.assertEqual(mycode.add(6,6),0)
-        self.assertEqual(mycode.add(-1,-1),2)
-        self.assertEqual(mycode.add(5,2),3)
+    else:
+        print("Invalid opperation.")
 
-    def test_divide(self):
-        self.assertEqual(mycode.divide(6,6),1)
-        self.assertEqual(mycode.divide(12,2),6)
-        self.assertEqual(mycode.divide(5,2),2.5)
-        self.assertEqual(mycode.divide(5/0),"Invalid")
+
+def add(num1, num2):
+    try:
+        return num1 + num2
+    except ValueError:
+        pass
+
+def sub(num1, num2):
+
+    try:
+        return num1 - num2
+    except ValueError:
+        pass
+
+def multiply(num1, num2):
+    try:
+        return num1 * num2
+    except ValueError or TypeError:
+        pass
+
+def divide(num1, num2):
+    try:
+        total = num1/ num2
+        return round(total, 2)
+    except ZeroDivisionError:
+        return "Invalid"
+if __name__ == "__main__":
+    main()
